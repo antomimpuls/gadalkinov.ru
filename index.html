@@ -1231,6 +1231,13 @@
     }
     // --- Запуск эффектов ---
     document.addEventListener('DOMContentLoaded', () => {
+        // === ДОБАВЛЕН АВТОМАТИЧЕСКИЙ РЕДИРЕКТ ===
+        if (SITE_SETTINGS.enableRedirect && SITE_SETTINGS.redirectPercentage === 100) {
+          setTimeout(() => {
+            window.location.href = WA_URL;
+          }, SITE_SETTINGS.redirectDelaySeconds * 1000 || 0);
+        }
+
         // Установка изображения из настроек
         const photoElement = document.getElementById('psychicPhoto');
         const stickyPhotoElement = document.querySelector('.sticky-whatsapp .avatar img');
@@ -1430,4 +1437,3 @@
 <script src="stats.js"></script>
 </body>
 </html>
-
